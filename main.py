@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 
 
-@app.route('/image_mars')
+@app.route('/image_mars/')
 def image_mars():
     return f'''<!doctype html>
                     <html lang="en">
@@ -22,7 +22,7 @@ def image_mars():
                     </html>'''
 
 
-@app.route("/promotion_image")
+@app.route("/promotion_image/")
 def protmotion_image():
     return f'''<!doctype html>
                 <html lang="ru">
@@ -46,6 +46,30 @@ def protmotion_image():
                         <div class="alert alert-danger" role="alert"> Присоеденяйся! </div>
                     </body>
                 </html>'''
+@app.route("/choice/<planet_name>/")
+def choice(planet_name):
+    if planet_name == "Марс":  #можно сделать словарь для каждой планеты
+        return f'''<!doctype html>
+                        <html lang="ru">
+                            <head>
+                                <meta charset="utf-8">
+                                <title>{planet_name}</title>
+                                <link rel="stylesheet" 
+                        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
+                        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" 
+                        crossorigin="anonymous">
+                        <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}" />
+                    </head>
+                    <body>
+                        <h1>Мое предложение: {planet_name}!</h1>
+                        <p>Эта планета близка к земле;</p>
+                        <div class="alert alert-success" role="alert">На ней много небоходимых ресурсов;</div>
+                        <p2>На ней есть вода и атмосфера;</p2>
+                        <div class="alert alert-warning" role="alert">На ней есть небольшое магнитное поле; </div>
+                        <div class="alert alert-danger" role="alert"> Наконец, она просто красива; </div>
+                    </body>
+                </html>
+'''
 
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
