@@ -46,6 +46,7 @@ def protmotion_image():
                         <div class="alert alert-danger" role="alert"> Присоеденяйся! </div>
                     </body>
                 </html>'''
+@app.route('/choice/')
 @app.route("/choice/<planet_name>/")
 def choice(planet_name):
     if planet_name == "Марс":  #можно сделать словарь для каждой планеты
@@ -67,8 +68,11 @@ def choice(planet_name):
                         <div class="alert alert-warning" role="alert">На ней есть небольшое магнитное поле; </div>
                         <div class="alert alert-danger" role="alert"> Наконец, она просто красива; </div>
                     </body>
-                </html>
-'''
+                </html>'''
+    elif planet_name == None:
+        return 'ffffff'
+    else:
+        return f"Планета не найдена"
 @app.route("/results/<nickname>/<int:level>/<float:rating>/")
 def results(nickname, level, rating):
     return f'''<!doctype html>
