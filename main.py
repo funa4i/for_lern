@@ -48,7 +48,7 @@ def protmotion_image():
                 </html>'''
 @app.route('/choice/')
 @app.route("/choice/<planet_name>/")
-def choice(planet_name):
+def choice(planet_name="Марс"):
     if planet_name == "Марс":  #можно сделать словарь для каждой планеты
         return f'''<!doctype html>
                         <html lang="ru">
